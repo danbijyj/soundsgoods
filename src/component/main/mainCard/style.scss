@@ -1,0 +1,566 @@
+@use '../../../styled/utils' as *;
+@use 'sass:math';
+
+.main-card {
+    :root {
+        --dark: #000;
+        --light: #f9f4eb;
+        --light2: #f0ece5;
+        --accent-1: #e5d9f6;
+        --accent-2: #ffd2f3;
+        --accent-3: #fcdca6;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'DM Sans';
+    }
+
+    h1 {
+        font-size: vw(24);
+        font-weight: 500;
+    }
+
+    p {
+        font-size: vw(17.6);
+        font-weight: 500;
+    }
+
+    span {
+        text-transform: uppercase;
+        font-family: 'DM Mono';
+        font-size: vw(12);
+        font-weight: 500;
+    }
+
+    .main-card-nav {
+        position: fixed;
+        width: 100vw;
+        padding: vw(32);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        pointer-events: auto;
+
+        .logo span,
+        .menu-btn span {
+            font-size: vw(12.8);
+            padding: vw(12);
+            border-radius: vw(4);
+            pointer-events: auto;
+        }
+
+        .logo span {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        .menu-btn span {
+            background-color: var(--light2);
+            color: var(--dark);
+        }
+    }
+
+    section {
+        position: relative;
+        width: 100vw;
+        height: 100svh;
+        padding: vw(32);
+        overflow: hidden;
+        pointer-events: auto;
+
+        * {
+            pointer-events: auto;
+        }
+    }
+
+    .main-card-con1 {
+        background-color: #fff;
+        display: flex;
+        position: relative;
+        overflow: visible;
+        z-index: 2;
+
+        .text-animation-container {
+            margin-left: vw(610);
+            color: #000;
+            text-align: left;
+            padding-top: vw(100);
+            position: relative;
+            z-index: 2;
+
+            .text-line {
+                font-size: vw(60);
+                font-weight: 600;
+                overflow: hidden;
+                transform: translateY(30vh);
+                opacity: 0.2;
+                visibility: hidden;
+
+                &.hero-content-1,
+                &.hero-content-2 {
+                    animation: content-animation 4s 1 ease;
+                    animation-fill-mode: forwards;
+                }
+
+                &.hero-content-2 {
+                    animation-delay: 0.5s;
+                }
+
+                .highlight {
+                    font-size: vw(60);
+                    color: $m_color1;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .svg-animation-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: auto;
+            z-index: 1;
+            opacity: 0.7;
+            overflow: visible;
+
+            svg {
+                width: 100%;
+                height: auto;
+                overflow: visible;
+            }
+        }
+    }
+
+    .main-card-con2 {
+        width: vw(1920);
+        height: vw(800);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #6680ff;
+        position: relative;
+        color: #fff;
+        z-index: 10;
+        .po {
+            font-size: vw(24);
+            font-weight: 600;
+            position: absolute;
+            top: vw(289);
+            left: vw(120);
+            line-height: 160%;
+            height: vw(38);
+        }
+        .co {
+            font-size: vw(40);
+            font-weight: 600;
+            position: absolute;
+            top: vw(447);
+            left: vw(120);
+            line-height: 100%;
+            height: vw(80);
+        }
+        .ho {
+            @include font-120px-700();
+            font-family: 'Bricolage Grotesque';
+            font-size: vw(80);
+            position: absolute;
+            top: vw(320);
+            left: vw(120);
+            line-height: 160%;
+            height: vw(64);
+        }
+
+        .pic {
+            @include p_center_top();
+            @include display_center();
+
+            right: vw(400);
+            width: vw(380);
+            height: vw(412);
+            border-radius: vw(20);
+            img {
+                width: vw(1900);
+                height: vw(700);
+            }
+        }
+    }
+
+    .main-card-con1-cards {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35%;
+        display: flex;
+        justify-content: center;
+        gap: vw(16);
+        z-index: 3;
+
+        // con1 카드들은 기본적으로 클릭 불가
+        pointer-events: none;
+
+        // 하지만 con1-clickable 클래스가 있으면 클릭 가능
+        .main-card-card.con1-clickable {
+            pointer-events: auto;
+            z-index: 10;
+            cursor: pointer;
+
+            &:hover {
+                transform: translateZ(10px) scale(1.05);
+                transition: transform 0.3s ease;
+                filter: brightness(1.1);
+            }
+        }
+    }
+
+    .main-card-con1-cards .main-card-card {
+        flex: 1;
+        position: relative;
+        aspect-ratio: 5/7;
+        padding: vw(12);
+        border-radius: vw(8);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        pointer-events: none; // 기본적으로 클릭 불가
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .main-card-card-title {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main-card-con1-cards .main-card-card span {
+        font-size: vw(11.2);
+    }
+
+    // 카드 배경 이미지 설정 (배열 순서대로)
+    @each $index, $card in (1, 2, 3) {
+        .main-card-con1-cards .main-card-card:nth-child(#{$index}) {
+            @include bg();
+            background-image: url('/images/main/main_card_0#{$index}.jpg');
+
+            @if $index == 1 {
+                transform-origin: top right;
+                z-index: 2;
+            } @else if $index == 2 {
+                z-index: 1;
+            } @else if $index == 3 {
+                transform-origin: top left;
+                z-index: 0;
+            }
+        }
+    }
+
+    .main-card-con3 {
+        padding: vw(128) vw(32);
+        position: relative;
+        width: vw(1920);
+        height: vw(1080);
+        z-index: 4;
+    }
+
+    .main-card-con3-header {
+        position: absolute;
+        width: 100%;
+        text-align: left;
+        top: vw(-00);
+        left: vw(210);
+
+        .ti_1 {
+            font-size: vw(60);
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.2);
+            font-family: 'Bricolage Grotesque';
+        }
+
+        .ti_2 {
+            font-size: vw(160);
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.2);
+            font-family: 'Bricolage Grotesque';
+        }
+    }
+
+    .main-card-cards {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100svh;
+        display: flex;
+        justify-content: center;
+        z-index: 5;
+        pointer-events: none; // 컨테이너는 클릭 불가
+    }
+
+    .main-card-cards-container {
+        position: relative;
+        width: 75%;
+        height: 100%;
+        margin-top: vw(64);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: vw(64);
+        pointer-events: none; // 컨테이너는 클릭 불가
+    }
+
+    .main-card-cards-container .main-card-card {
+        flex: 1;
+        position: relative;
+        aspect-ratio: 5/7;
+        perspective: vw(1000);
+        pointer-events: none; // 기본적으로 클릭 불가
+
+        // 클릭 가능 상태일 때만 스타일 변경
+        &.clickable {
+            pointer-events: auto;
+            cursor: pointer;
+            z-index: 10;
+
+            .main-card-card-wrapper {
+                &:hover {
+                    filter: brightness(1.1);
+                    transform: translate(-50%, -50%) scale(1.05);
+                    transition: transform 0.3s ease, filter 0.3s ease;
+                }
+            }
+        }
+    }
+
+    .main-card-cards-container .main-card-card .main-card-card-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        animation: main-card-floating 2s infinite ease-in-out;
+        pointer-events: none; // 래퍼는 기본적으로 클릭 불가
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    @keyframes main-card-floating {
+        0% {
+            transform: translate(-50%, -50%);
+        }
+        50% {
+            transform: translate(-50%, -55%);
+        }
+        100% {
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    // 카드별 애니메이션 딜레이 설정
+    @for $i from 1 through 3 {
+        .main-card-cards-container .main-card-card:nth-child(#{$i}) .main-card-card-wrapper {
+            animation-delay: #{($i - 1) * 0.25}s;
+        }
+    }
+
+    .main-card-flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        pointer-events: none;
+    }
+
+    .main-card-flip-card-front,
+    .main-card-flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: vw(16);
+        backface-visibility: hidden;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .main-card-flip-card-front {
+        padding: vw(16);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    // 카드 프론트 배경 이미지 설정
+    @for $i from 1 through 3 {
+        .main-card-cards-container .main-card-card:nth-child(#{$i}) .main-card-flip-card-front {
+            @include bg();
+            background-image: url('/images/main/main_card_0#{$i}.jpg');
+        }
+    }
+
+    .main-card-flip-card-back {
+        padding: vw(16);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: vw(32);
+        transform: rotateY(180deg);
+    }
+
+    .main-card-card-copy {
+        width: 100%;
+        height: 100%;
+        border-radius: vw(20);
+        @include display_center();
+        overflow: hidden;
+        cursor: pointer;
+        .pic {
+            width: 100%;
+            height: 100%;
+            border-radius: vw(20);
+            overflow: hidden;
+            @include display_center();
+            img {
+                height: vw(590);
+                object-fit: cover;
+                border-radius: vw(20);
+            }
+        }
+    }
+
+    .main-card-cards {
+        // 카드별 초기 위치 설정
+        @for $i from 1 through 3 {
+            .main-card-cards-container .main-card-card:nth-child(#{$i}) {
+                $x: if($i == 1, '100%', if($i == 2, '0%', '-100%'));
+                $rotate: if($i == 1, -5, if($i == 2, 0, 5));
+                $zIndex: if($i == 1, 2, if($i == 2, 1, 0));
+
+                transform: translateX(#{$x}) translateY(-100%) rotate(#{$rotate}deg) scale(0.25);
+                z-index: $zIndex;
+                opacity: 0;
+            }
+        }
+    }
+
+    .main-card-mobile-cards {
+        display: none;
+
+        @media (max-width: 768px) {
+            display: block;
+            margin-top: vw(32);
+            pointer-events: auto;
+
+            .main-card-cards-container {
+                flex-direction: column;
+                align-items: center;
+                gap: vw(32);
+                pointer-events: none;
+            }
+
+            .main-card-card {
+                width: 80%;
+                pointer-events: none;
+
+                &.clickable {
+                    pointer-events: auto;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: scale(1.05);
+                        transition: transform 0.3s ease;
+                    }
+                }
+            }
+        }
+    }
+
+    // 애니메이션 키프레임
+    @keyframes content-animation {
+        0% {
+            transform: translateY(30vh);
+            visibility: visible;
+            opacity: 0;
+        }
+        20% {
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 0.8;
+        }
+    }
+
+    // 반응형 디자인
+    @media (max-width: 1000px) {
+        .main-card-con1 {
+            .text-animation-container {
+                margin-left: vw(100);
+            }
+
+            .text-line {
+                font-size: vw(60);
+
+                .highlight {
+                    font-size: vw(60);
+                }
+            }
+        }
+
+        .main-card-con1-cards {
+            width: 60%;
+        }
+
+        .main-card-cards-container {
+            width: 90%;
+            gap: vw(32);
+        }
+
+        .svg-animation-container {
+            width: 90%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-card-con1 {
+            .text-animation-container {
+                padding-top: vw(150);
+                margin-left: vw(50);
+            }
+
+            .text-line {
+                font-size: vw(40);
+
+                .highlight {
+                    font-size: vw(40);
+                }
+            }
+        }
+
+        .main-card-con1-cards {
+            width: 80%;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-card-con1-cards .main-card-card {
+            width: 80%;
+        }
+
+        .main-card-cards {
+            display: none;
+        }
+
+        .svg-animation-container {
+            width: 95%;
+            top: 40%;
+        }
+    }
+}

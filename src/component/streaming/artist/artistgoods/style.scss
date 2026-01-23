@@ -1,0 +1,176 @@
+@use '../../../../styled/utils/' as *;
+
+#artist-goods {
+    h2 {
+        @include font-30px-600();
+        color: $m_color2;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        margin-bottom: vw(40);
+        img {
+            width: vw(40);
+            height: vw(40);
+            margin-left: vw(14);
+            object-fit: cover;
+            vertical-align: top;
+            cursor: pointer;
+        }
+    }
+    .artist-goods-list {
+        display: flex;
+        justify-content: space-between;
+        .artist-goods-item {
+            cursor: pointer;
+            width: vw(260);
+            margin-bottom: vw(40);
+            .goods-img {
+                position: relative;
+                margin-bottom: vw(10);
+                img {
+                    width: vw(260);
+                    height: vw(260);
+                    border-radius: vw(20);
+                    object-fit: contain;
+                }
+                .wish-box {
+                    position: absolute;
+                    top: vw(10);
+                    right: vw(10);
+                    gap: vw(8);
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgba($fc, 0.6);
+                    border-radius: vw(500);
+                    padding: vw(4) vw(10) vw(5);
+                    .icon {
+                        img {
+                            width: vw(20);
+                            height: vw(20);
+                            @include display_center();
+                        }
+                    }
+                    .count {
+                        display: none;
+                        @include font-16px-400();
+                        vertical-align: middle;
+                    }
+                    &:hover {
+                        .count {
+                            display: block;
+                            color: $fff;
+                        }
+                    }
+                }
+            }
+            .artist-goods-text {
+                cursor: pointer;
+                line-height: 1.6;
+                h3 {
+                    @include font-18px-600();
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin-bottom: 0;
+                }
+                p {
+                    @include font-16px-400();
+                    color: $grey777;
+                }
+                h4 {
+                    @include font-18px-400();
+                }
+            }
+        }
+    }
+}
+
+@include tablet {
+    #artist-goods {
+        h2 {
+            @include m-font-20px-600();
+            color: $m_color2;
+            margin-bottom: vw(20, 393);
+            img {
+                width: vw(24, 393);
+                height: vw(24, 393);
+                margin-left: vw(10, 393);
+            }
+        }
+        .artist-goods-list {
+            .artist-goods-item {
+                width: vw(110, 393);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+                padding-bottom: vw(2, 393);
+                .goods-img {
+                    position: relative;
+                    width: vw(110, 393);
+                    height: vw(143, 393);
+                    margin-bottom: vw(8, 393);
+                    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+                    @include display_center();
+                    overflow: hidden;
+                    img {
+                        width: vw(143, 393);
+                        height: vw(143, 393);
+                        border-radius: 0;
+                    }
+                    .wish-box {
+                        position: absolute;
+                        top: auto;
+                        left: auto;
+                        bottom: vw(6, 393);
+                        right: vw(6, 393);
+                        background-color: transparent;
+                        padding: 0;
+                        .icon {
+                            img {
+                                width: vw(17, 393);
+                                height: vw(16, 393);
+                            }
+                        }
+                        .count {
+                            margin-left: vw(4, 393);
+                            @include m-font-12px-400();
+                        }
+                        &:hover,
+                        &:active {
+                            background-color: rgba($fc, 0.6);
+                            padding: vw(2, 393) vw(8, 393) vw(3, 393);
+                            .icon {
+                                img {
+                                    width: vw(15, 393);
+                                    height: vw(15, 393);
+                                }
+                            }
+                            .count {
+                                color: $fff;
+                            }
+                        }
+                    }
+                }
+                .artist-goods-text {
+                    h3 {
+                        @include m-font-12px-500();
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: normal !important;
+                        margin-bottom: vw(5, 393);
+                    }
+                    p {
+                        @include m-font-12px-400();
+                        color: $grey777;
+                    }
+                    h4 {
+                        @include m-font-12px-500();
+                    }
+                }
+            }
+        }
+    }
+}

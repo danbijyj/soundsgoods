@@ -1,0 +1,97 @@
+@use '../../../styled/utils' as *;
+
+.goods_main {
+    position: relative;
+
+    .goods_page_main_title {
+        // margin-left: vw(60);
+        @include font-30px-600();
+        margin-top: vw(40);
+        margin-bottom: vw(40);
+    }
+    .goods_banner {
+        @include display_al();
+        gap: vw(16);
+        margin-bottom: vw(60);
+        .banner_pic {
+            width: vw(858);
+            height: vw(361);
+            position: relative;
+            img {
+                width: vw(858);
+                background-color: rgba(0, 0, 0, 0.6);
+            }
+            p {
+                @include font-18px-600;
+                color: $fff;
+                position: absolute;
+                left: vw(45);
+                bottom: vw(90);
+                line-height: 1;
+            }
+            h3 {
+                @include font-30px-600;
+                color: $fff;
+                position: absolute;
+                left: vw(45);
+                bottom: vw(45);
+                line-height: 1;
+            }
+        }
+        .goods_list {
+            @include display_al();
+            gap: vw(16);
+            li {
+                cursor: pointer;
+                width: vw(200);
+                height: vw(365);
+                display: flex;
+                flex-direction: column;
+                text-align: left;
+                gap: vw(10);
+                position: relative;
+                &:first-child {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: vw(200);
+                        height: vw(260);
+                        display: block;
+                        background: rgba(0, 0, 0, 0.08);
+                    }
+                }
+                .li_pic {
+                    width: vw(200);
+                    height: vw(260);
+                    overflow: hidden;
+                    @include display_center();
+                    margin-bottom: vw(10);
+                    position: relative;
+
+                    img {
+                        width: vw(300);
+                    }
+                }
+                strong {
+                    width: vw(160);
+                    display: block;
+                    box-sizing: border-box;
+                    // margin-left: vw(20);
+                    @include font-18px-600();
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                span {
+                    display: block;
+                    box-sizing: border-box;
+                    // margin-left: vw(20);
+                    @include font-14px-500();
+                    width: vw(160);
+                }
+            }
+        }
+    }
+}

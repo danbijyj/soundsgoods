@@ -1,0 +1,38 @@
+@use '../../../../styled/utils/' as *;
+
+#rec-artist {
+    margin-bottom: vw(75);
+    h2 {
+        @include font-30px-600();
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        margin-bottom: vw(40);
+    }
+    .rec-artist-list {
+        @include display_between();
+        .rec-artist-item {
+            width: vw(120);
+            text-align: center;
+            cursor: pointer;
+            img {
+                width: vw(120);
+                height: vw(120);
+                margin-bottom: vw(20);
+            }
+            h3 {
+                @include font-16px-700();
+                margin-bottom: vw(8) !important;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+                max-width: 100%;
+            }
+            h4 {
+                @include font-14px-400();
+                word-break: keep-all;
+            }
+        }
+    }
+}

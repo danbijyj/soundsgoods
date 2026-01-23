@@ -1,0 +1,54 @@
+@use '../../../../styled/utils/' as *;
+
+#artist-i-album-mobile {
+    margin-bottom: vw(40, 393);
+    h2 {
+        @include m-font-20px-600();
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        margin-bottom: vw(20, 393);
+    }
+    .artist-i-cover-mobile {
+        width: 100%;
+        margin-right: vw(-20, 393);
+        .mySwiper {
+            width: 100%;
+            padding-right: vw(20, 393);
+            .swiper-slide {
+                .artist-i-album-item {
+                    width: vw(105, 393);
+                    text-align: center;
+                    cursor: pointer;
+                    img {
+                        border-radius: vw(20, 393);
+                        width: vw(105, 393);
+                        height: vw(105, 393);
+                        margin-bottom: vw(16, 393);
+                    }
+                    .album-item-text {
+                        text-align: left;
+                        line-height: 1.5;
+                        h3 {
+                            @include m-font-14px-600;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        h4 {
+                            @include m-font-12px-400;
+                            color: $grey777;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        p {
+                            @include m-font-12px-400;
+                            color: $grey777;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

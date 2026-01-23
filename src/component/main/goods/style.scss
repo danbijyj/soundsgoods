@@ -1,0 +1,122 @@
+@use '../../../styled/utils' as *;
+
+.main-goods {
+    margin: 0;
+    height: vw(800px);
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+
+    .sidebar {
+        width: 100vh;
+        height: max-content;
+        display: flex;
+        align-items: flex-start;
+        transform: rotate(-90deg) translate(-70%, 0);
+        transform-origin: left top;
+        padding: 1.5em 3em;
+        font-family: 'PP Neue Montreal';
+
+        > div {
+            &:nth-child(1) {
+                flex: 2;
+            }
+
+            &:nth-child(2) {
+                flex: 2;
+                display: flex;
+                gap: 4em;
+            }
+        }
+    }
+
+    .main-pop {
+        font-family: 'Bricolage Grotesque', 'Pretendard';
+        text-transform: uppercase;
+        font-size: 7rem;
+        line-height: 85%;
+        margin-bottom: 4rem;
+        font-weight: 700;
+    }
+    .bg-artists_goods {
+        font-family: 'Bricolage Grotesque', 'Pretendard';
+        font-size: vw(100px);
+        font-weight: 700;
+        transform: rotate(90deg) translate(90%, 360%);
+        color: #000;
+        opacity: 10%;
+    }
+    .sidebar-item {
+        font-size: 30px;
+        z-index: 20;
+    }
+    .sliders {
+        width: 100%;
+        // height: 100%;
+        overflow: hidden;
+    }
+
+    .slider-wrapper {
+        // position: fixed;
+        position: absolute;
+        top: 0;
+        width: vw(8000px);
+        padding: 0 vw(600px);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: vw(100px);
+    }
+
+    .slide {
+        // position: absolute;
+        width: vw(300px);
+        height: vw(400px);
+        background: none;
+    }
+
+    img {
+        // position: fixed;
+
+        width: 100%;
+        height: 90%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 393px) {
+    .main-goods {
+        height: 1200px;
+
+        .sidebar {
+            transform: rotate(-90deg) translate(-80%, 0);
+            padding: 1em 2em;
+
+            .main-pop {
+                font-size: 3rem;
+                line-height: 1;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .slider-wrapper {
+            width: 3000px;
+            padding: 0 100px;
+            gap: 20px;
+        }
+
+        .slide {
+            width: 150px;
+            height: 200px;
+        }
+
+        img {
+            height: 100%;
+        }
+
+        .bg-artists_goods {
+            font-size: 40px;
+            transform: rotate(90deg) translate(80%, 300%);
+        }
+    }
+}

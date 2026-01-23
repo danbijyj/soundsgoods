@@ -1,0 +1,90 @@
+@use '../../../styled/utils' as *;
+
+//팝업
+.popupList {
+    padding-top: vw(100);
+    margin: auto;
+    .popupTitle {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: vw(40);
+        width: vw(1410);
+        margin-bottom: vw(40);
+        h2 {
+            color: #000;
+            font-size: vw(30);
+            font-weight: 600;
+            display: flex;
+            width: vw(256);
+            justify-content: space-between;
+            align-items: center;
+        }
+        h3 {
+            color: #000;
+            font-size: vw(30);
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: vw(1) solid #000;
+            display: none;
+        }
+    }
+}
+
+.popup {
+    width: vw(1410);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .popupItem {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: vw(20);
+        width: vw(260);
+        img {
+            width: vw(260);
+            height: vw(260);
+            border-radius: vw(20);
+            object-fit: cover;
+        }
+        .popupInfo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: vw(6);
+            width: 100%;
+            .popuptitle {
+                align-self: stretch;
+                h2 {
+                    overflow: hidden;
+                    color: #000;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    font-size: vw(18);
+                    font-weight: 500;
+                }
+            }
+            .popupDate {
+                h3 {
+                    color: rgba(0, 0, 0, 0.6);
+                    font-size: vw(16);
+                    font-weight: 500;
+                    line-height: 160%;
+                }
+            }
+        }
+        .popupListen {
+            color: rgba(0, 0, 0, 0.8);
+            font-family: Pretendard;
+            p {
+                color: rgba(0, 0, 0, 0.8);
+                font-size: vw(16);
+                font-style: normal;
+                font-weight: 600;
+                line-height: 130%;
+            }
+        }
+    }
+}

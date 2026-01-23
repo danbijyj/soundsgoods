@@ -1,0 +1,29 @@
+@use '../../../styled/utils' as *;
+
+#artist-wrap {
+    width: 100%;
+    display: flex;
+    .space {
+        width: vw(230);
+        flex-shrink: 0;
+    }
+    .inner {
+        max-width: vw(1410);
+        width: 100%;
+        padding-top: vw(75);
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    @include tablet {
+        width: 100% !important;
+        .space {
+            display: none;
+        }
+        .inner {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0;
+            padding: vw(40, 393) vw(18, 393) 0;
+        }
+    }
+}

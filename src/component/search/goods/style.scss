@@ -1,0 +1,120 @@
+@use '../../../styled/utils' as *;
+
+//굿즈리스트
+.goodsList {
+    padding-top: vw(100);
+    margin: auto;
+    .goodsTitle {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: vw(40);
+        width: vw(1410);
+        h2 {
+            color: #000;
+            font-size: vw(30);
+            font-weight: 600;
+            display: flex;
+            width: vw(353);
+            justify-content: space-between;
+            align-items: center;
+            span {
+                display: block;
+            }
+        }
+        h3 {
+            color: #000;
+            font-size: vw(30);
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: vw(1) solid #000;
+            display: none;
+        }
+    }
+
+    .goods {
+        width: vw(1410);
+        margin-top: vw(40);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        .GoodsItem {
+            position: relative;
+            width: vw(260);
+            cursor: pointer;
+            img {
+                width: vw(260);
+                height: vw(260);
+                border-radius: vw(20);
+                object-fit: contain;
+            }
+            .wish-box {
+                position: absolute;
+                top: vw(10);
+                right: vw(10);
+                gap: vw(8);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba($fc, 0.6);
+                border-radius: vw(500);
+                padding: vw(4) vw(10) vw(5);
+                .icon {
+                    img {
+                        width: vw(20);
+                        height: vw(20);
+                        @include display_center();
+                    }
+                }
+                .count {
+                    display: none;
+                    @include font-16px-400();
+                    vertical-align: middle;
+                }
+                &:hover {
+                    .count {
+                        display: block;
+                        color: $fff;
+                    }
+                }
+            }
+            .GoodsInfo {
+                display: flex;
+                width: vw(260);
+                padding: vw(7) 0;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px 10px 0 0;
+                background: rgba(255, 255, 255, 0.6);
+                .GoodsPrice {
+                    display: flex;
+                    width: vw(260);
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: vw(10);
+                    flex-shrink: 0;
+                    h2 {
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 1;
+                        align-self: stretch;
+                        overflow: hidden;
+                        color: #000;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        @include font-18px-600();
+                        text-transform: uppercase;
+                        p {
+                            text-align: right;
+                            @include font-18px-400();
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
